@@ -1,19 +1,14 @@
-export class Transacao {
-    _quantidade;
-    _valor;
-    _data;
-    constructor(pQuantidade, pValor, pData) {
-        this._quantidade = pQuantidade,
-            this._valor = pValor,
-            this._data = pData;
+export class Negociacao {
+    constructor(_data, quantidade, valor) {
+        this._data = _data;
+        this.quantidade = quantidade;
+        this.valor = valor;
     }
-    getQuantidade() {
-        return this._quantidade;
+    get volume() {
+        return this.quantidade * this.valor;
     }
-    getValor() {
-        return this._valor;
-    }
-    getData() {
-        return this._data;
+    get data() {
+        const data = new Date(this._data.getTime());
+        return data;
     }
 }
