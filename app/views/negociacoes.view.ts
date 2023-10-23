@@ -1,5 +1,6 @@
 import { Negociacao } from "../models/negociacao";
 import { Negociacoes } from "../models/negociacoes.js";
+import { view } from "./view.js";
 
 export class NegociacoesView {
 
