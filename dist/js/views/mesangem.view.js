@@ -1,20 +1,14 @@
-export class MensagemView{
-
-    private elemento: HTMLElement;
-
-    constructor(seletor: string){
+export class MensagemView {
+    constructor(seletor) {
         this.elemento = document.querySelector(seletor);
     }
-
-    template(model: string): string{
+    template(model) {
         return `
             <p class="alert alert-info">${model}</p>
         `;
     }
-
-    update(model: string): void{
+    update(model) {
         const template = this.template(model);
         this.elemento.innerHTML = template;
     }
-
 }
