@@ -14,12 +14,15 @@ export class NegociacaoController {
     }
     adiciona() {
         const negociacao = this.criaNegociacao();
-        negociacao.data.setDate(12);
-        this.negociacoes.adiciona(negociacao);
-        this.negociacoesView.update(this.negociacoes);
-        console.log(this.viewMensagem.template('#mensagemView'));
-        this.viewMensagem.update('Deu Certo');
-        this.limparFormulario();
+        if (negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6) {
+            negociacao.data.setDate(12);
+            this.negociacoes.adiciona(negociacao);
+            this.limparFormulario();
+            this.atualizarView;
+        }
+        else {
+            this.viewMensagem.update('So é possivel informar datas referente a dias uteis');
+        }
     }
     criaNegociacao() {
         const exp = /-/g;
@@ -33,5 +36,9 @@ export class NegociacaoController {
         this.inputQuantidade.value = '';
         this.inputValor.value = '';
         this.inputData.focus();
+    }
+    atualizarView() {
+        this.negociacoesView.update(this.negociacoes);
+        this.viewMensagem.update('Inserido com sucesso');
     }
 }
