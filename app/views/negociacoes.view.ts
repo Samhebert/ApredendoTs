@@ -15,13 +15,13 @@ export class NegociacoesView extends view<Negociacoes>{
                 </tr>
             </thead>
             <tbody>
-            ${model.lista().map(Negociacao => {
+            ${model.lista().map(negociacao => {
 
                 return `
                 <tr>
-                <td>${Intl.DateTimeFormat().format(Negociacao.data)}</td>
-                <td>${Negociacao.quantidade}</td>
-                <td>${Negociacao.valor}</td>
+                <td>${Intl.DateTimeFormat().format(negociacao.data)}</td>
+                <td>${negociacao.quantidade}</td>
+                <td>${negociacao.valor}</td>
                 </tr>
                 `;
             }).join('')}
@@ -33,9 +33,5 @@ export class NegociacoesView extends view<Negociacoes>{
 
     }
 
-    update(model: Negociacoes):void{
-        this.elemento.innerHTML = this.template(model);
- 
-    }
 }
 

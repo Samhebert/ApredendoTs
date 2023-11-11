@@ -20,12 +20,10 @@ export class NegociacaoController {
 
     adiciona(): void {
         const negociacao = this.criaNegociacao();
-
         if(negociacao.data.getDay() > 0 && negociacao.data.getDay()< 6){
-            negociacao.data.setDate(12);
             this.negociacoes.adiciona(negociacao);
             this.limparFormulario();
-            this.atualizarView;
+            this.atualizarView();
         }else{
             this.viewMensagem.update('So é possivel informar datas referente a dias uteis');
         }

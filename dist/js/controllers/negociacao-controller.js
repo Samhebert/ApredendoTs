@@ -3,10 +3,13 @@ import { Negociacoes } from '../models/negociacoes.js';
 import { MensagemView } from '../views/mesangem.view.js';
 import { NegociacoesView } from '../views/negociacoes.view.js';
 export class NegociacaoController {
+    inputData;
+    inputQuantidade;
+    inputValor;
+    negociacoes = new Negociacoes();
+    negociacoesView = new NegociacoesView('#negociacoesView2');
+    viewMensagem = new MensagemView('#mensagemView');
     constructor() {
-        this.negociacoes = new Negociacoes();
-        this.negociacoesView = new NegociacoesView('#negociacoesView2');
-        this.viewMensagem = new MensagemView('#mensagemView');
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
         this.inputValor = document.querySelector('#valor');
@@ -15,10 +18,8 @@ export class NegociacaoController {
     adiciona() {
         const negociacao = this.criaNegociacao();
         if (negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6) {
-            negociacao.data.setDate(12);
             this.negociacoes.adiciona(negociacao);
-            this.limparFormulario();
-            this.atualizarView;
+            this.atualizarView();
         }
         else {
             this.viewMensagem.update('So é possivel informar datas referente a dias uteis');
